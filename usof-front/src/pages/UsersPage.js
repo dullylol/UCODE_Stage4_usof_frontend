@@ -3,17 +3,17 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Cookie from "js-cookie"
 
-export default class PostsPage extends Component {
+export default class UsersPage extends Component {
   state = {
-    posts: [],
+    users: [],
   };
 
   componentDidMount() {
     axios
-      .get(`http://127.0.0.1:8000/api/posts`)
+      .get(`http://127.0.0.1:8000/api/users`)
       .then((response) => {
-        const posts = response.data;
-        this.setState({ posts });
+        const users = response.data;
+        this.setState({ users });
       })
       .catch((error) => {
         console.log(error);
@@ -21,27 +21,27 @@ export default class PostsPage extends Component {
   }
 
   render() {
-    let postsStr = [];
+    let usersStr = [];
 
-    for (let key in this.state.posts) {
-      postsStr.push(
-        <li style={styles.list_row} key={this.state.posts[key].id} >
-          <Link style={styles.post} to="/post" onClick={() => onPostClick(this.state.posts[key].id)}>{this.state.posts[key].title}</Link>
+    for (let key in this.state.users) {
+        usersStr.push(
+        <li style={styles.list_row} key={this.state.users[key].id} >
+          <Link style={styles.post} to="/user" onClick={() => onUsersClick(this.state.users[key].id)}>{this.state.users[key].login}</Link>
         </li>
       )
     }
 
     return (
       <div>
-        <h2 style={styles.head_name}>All posts:</h2>
-        <ul style={styles.list}>{postsStr}</ul>
+        <h2 style={styles.head_name}>All users:</h2>
+        <ul style={styles.list}>{usersStr}</ul>
       </div>
     );
   }
 }
 
-function onPostClick(id) {
-  Cookie.set('post_id', id)
+function onUsersClick(id) {
+  Cookie.set('some_user_id', id)
 }
 
 const styles = {
@@ -74,16 +74,16 @@ const styles = {
   },
 
   post: {
-    color: 'purple',
+    color: 'black',
     fontSize: '2em',
-    textShadow: '1px 1px 1px black, 0 0 1px red',
+    textShadow: '1px 1px 1px black',
     border: '1px solid purple',
     borderRadius: '5px',
-    background: 'lavender',
+    background: 'darkSalmon',
     padding: '10px',
     width: '90%',
-    textAlign: "center",
-    wordBreak: 'break-all'
+    textAlign: "center"
   },
 
 }
+

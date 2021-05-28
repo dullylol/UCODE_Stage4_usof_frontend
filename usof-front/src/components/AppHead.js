@@ -3,11 +3,23 @@ import { Link } from "react-router-dom";
 import Cookie from "js-cookie"
 
 export default function AppHead() {
+
+    let lowMenuBar = (
+        <div style={styles.auth}>
+            <Link style={styles.menu_bar_links} to='/'>Home</Link>
+            <Link style={styles.menu_bar_links} to="/posts">All posts</Link>
+            <Link style={styles.menu_bar_links} to="/categories">All categories</Link>
+            <Link style={styles.menu_bar_links} to='/users'>All users</Link>
+        </div>
+    )
+
     let menuBar = (
         <div style={styles.auth}>
-            <Link to='/'>Home</Link>
-            <Link to='/profile'>Profile</Link>
-            <Link to="/posts">All posts</Link>
+            <Link style={styles.menu_bar_links} to='/'>Home</Link>
+            <Link style={styles.menu_bar_links} to='/profile'>Profile</Link>
+            <Link style={styles.menu_bar_links} to="/posts">All posts</Link>
+            <Link style={styles.menu_bar_links} to="/categories">All categories</Link>
+            <Link style={styles.menu_bar_links} to='/users'>All users</Link>
         </div>
     )
 
@@ -16,6 +28,7 @@ export default function AppHead() {
             <div style={styles.head}>
                 <img style={styles.logo} src='./img/logo.png' alt='logo'/>
                 <Link to="/" style={styles.linkStyle}><h1 style={styles.headText}>Usof</h1></Link>
+                {lowMenuBar}
                 <div style={styles.auth}>
                     <Link style={styles.login} to="/login">Login</Link>
                     <Link style={styles.register} to="/registration">Registration</Link>
@@ -46,9 +59,9 @@ export default function AppHead() {
   
   const styles = {
     head: {
-        background: 'Indigo',
+        background: 'linear-gradient(Indigo, #9198e5)',
         border: '3px solid black',
-        borderRadius: '8px',
+        borderRadius: '0 0 8px 8px ',
         display: 'flex',
         justifyContent: 'space-between',
     },
@@ -71,6 +84,7 @@ export default function AppHead() {
         margin: '10px',
         marginTop: 'auto',
         marginBottom: 'auto',
+        wordBreak: 'break-all'
     },
 
     auth: {
@@ -90,4 +104,11 @@ export default function AppHead() {
         color: 'LemonChiffon',
         display: 'block'
     },
+
+
+    menu_bar_links: {
+        color: 'LemonChiffon',
+        margin: '10px',
+        fontSize: '18px'
+    }
   }

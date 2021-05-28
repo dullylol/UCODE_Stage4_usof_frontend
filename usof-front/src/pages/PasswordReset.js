@@ -23,7 +23,7 @@ export default class PasswordReset extends React.Component {
       data: {
         email: this.state.email,
       },
-      url: "http://localhost:8000/api/auth/password-reset",
+      url: "http://127.0.0.1:8000/api/auth/password-reset",
     };
 
     console.log(api);

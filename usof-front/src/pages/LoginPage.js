@@ -29,7 +29,7 @@ export default class LoginPage extends React.Component {
         login: this.state.login,
         password: this.state.password,
       },
-      url: "http://localhost:8000/api/auth/login",
+      url: "http://127.0.0.1:8000/api/auth/login",
     };
 
     console.log(api);
@@ -49,9 +49,11 @@ export default class LoginPage extends React.Component {
 
   render() {
     return (
-      <div className="login">
-        <form onSubmit={this.onSubmit}>
+      <div>
+        <h2 style={styles.head_name}>Login</h2>
+        <form style={styles.form} onSubmit={this.onSubmit}>
           <input
+            style={styles.input}
             type="text"
             placeholder="Login"
             onChange={this.onChangeLogin}
@@ -59,16 +61,17 @@ export default class LoginPage extends React.Component {
           ></input>
           <br/>
           <input
+           style={styles.input}
             type="password"
             placeholder="Password"
             onChange={this.onChangePassword}
             name="password" required
           ></input>
           <br/>
-          <input type="submit" value="Sing in"></input>
+          <input style={styles.button} type="submit" value="Sing in"></input>
           <br/>
 
-          <div className="password_reset">
+          <div style={styles.post} className="password_reset">
             <Link to="passreset">Password Reset</Link>
           </div>
         </form>
@@ -76,4 +79,90 @@ export default class LoginPage extends React.Component {
     );
   }
 }
+
+const styles = {
+
+  head_name: {
+    textAlign: 'center',
+    color: 'purple',
+    fontFamily: 'Gill Sans, sans-serif',
+    fontSize: '40px',
+    lineHeight: '30px',
+    margin: '0 0 0',
+    padding: '20px 30px',
+    textAlign: 'center',
+    textTransform: 'uppercase',
+  },
+  
+  list: {
+    listStyleType: 'none',
+    margin: '0',
+    padding: "0"
+  },
+
+  list_row: {
+    display: "flex",
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "center",
+    margin: '5px',
+  },
+
+  post: {
+    color: 'purple',
+    fontSize: '1em',
+    textShadow: '1px 0 1px black',
+    borderRadius: '5px',
+    background: 'lavender',
+    textAlign: "center",
+    margin: 'auto',
+  },
+
+  //form
+  form: {
+    background: 'lavender',
+    width: '310px',
+    height: '280px',
+    textAlign: 'center',
+    margin: 'auto',
+    paddingTop: '10px',
+    border: '2px solid purple',
+    borderRadius: '10px',
+    marginTop: '1%'
+  },
+
+  input: {
+    margin: '7px',
+    padding: '12px 20px',
+    fontSize: '1rem',
+    borderWidth: 'calc(var(--border-width) * 1px)',
+    borderStyle: 'solid',
+    borderColor: 'var(--accent)',
+    borderRadius: 'calc(var(--border-radius) * 1px)',
+    textAlign: 'center',
+    outline: 'transparent',
+    transition: 'border-color calc(var(--transition, 0.2) * 1s) ease',
+  },
+
+  button: {
+      background: '#222',
+      height: '50px',
+      minWidth: '150px',
+      border: 'none',
+      borderRadius: '10px',
+      color: '#eee',
+      fontSize: '28px',
+      fontFamily: 'Cookie, cursive',
+      position: 'relative',
+      transition: '1s',
+      webkitTapHighlightColor: 'transparent',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      cursor: 'pointer',
+      margin: 'auto',
+      marginTop: '5px'
+  }
+
+};
 

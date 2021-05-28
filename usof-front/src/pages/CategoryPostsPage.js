@@ -3,14 +3,14 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Cookie from "js-cookie"
 
-export default class PostsPage extends Component {
+export default class CategoryPostsPage extends Component {
   state = {
     posts: [],
   };
 
   componentDidMount() {
     axios
-      .get(`http://127.0.0.1:8000/api/posts`)
+      .get(`http://127.0.0.1:8000/api/categories/${Cookie.get('category_id')}/posts`)
       .then((response) => {
         const posts = response.data;
         this.setState({ posts });
@@ -33,7 +33,7 @@ export default class PostsPage extends Component {
 
     return (
       <div>
-        <h2 style={styles.head_name}>All posts:</h2>
+        <h2 style={styles.head_name}>Category posts:</h2>
         <ul style={styles.list}>{postsStr}</ul>
       </div>
     );

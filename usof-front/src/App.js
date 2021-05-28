@@ -3,6 +3,11 @@ import LoginPage from './pages/LoginPage'
 import RegistrationPage from './pages/RegistrationPage'
 import PostsPage from './pages/PostsPage'
 import PostPage from './pages/PostPage'
+import CategoryPostsPage from './pages/CategoryPostsPage'
+import CategoriesPage from './pages/CategoriesPage'
+import CategoryPage from './pages/CategoryPage'
+import UsersPage from './pages/UsersPage'
+import UserPage from './pages/UserPage'
 import ProfilePage from './pages/ProfilePage'
 import PasswordReset from './pages/PasswordReset'
 
@@ -23,6 +28,11 @@ export default function App() {
           <Route path='/profile' exact component={ProfilePage}/>
           <Route path='/posts' exact component={PostsPage}/>
           <Route path='/post' exact component={PostPage}/>
+          <Route path='/category-posts' exact component={CategoryPostsPage}/>
+          <Route path='/categories' exact component={CategoriesPage}/>
+          <Route path='/category' exact component={CategoryPage}/>
+          <Route path='/users' exact component={UsersPage}/>
+          <Route path='/user' exact component={UserPage}/>
           <Route path='/passreset' exact component={PasswordReset}/>
         </Switch>
       </Router>
